@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2024 at 03:34 PM
+-- Generation Time: Mar 15, 2024 at 04:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -35,13 +35,6 @@ CREATE TABLE `admin` (
   `type` varchar(100) NOT NULL DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`adminID`, `admin_name`, `admin_email`, `admin_password`, `type`) VALUES
-(1, 'admin', 'admin@gmail.com', '1234', 'admin');
-
 -- --------------------------------------------------------
 
 --
@@ -55,14 +48,6 @@ CREATE TABLE `album` (
   `date` date NOT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'process'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `album`
---
-
-INSERT INTO `album` (`albumID`, `albumName`, `background_image`, `date`, `status`) VALUES
-(14, 'album 1', 'sampleimage.png', '2024-03-02', 'process'),
-(15, 'album 2', 'sampleimage3.png', '2024-03-02', 'process');
 
 -- --------------------------------------------------------
 
@@ -78,18 +63,6 @@ CREATE TABLE `gallery` (
   `date` date NOT NULL,
   `process` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `gallery`
---
-
-INSERT INTO `gallery` (`galleryID`, `album_id`, `gallery_name`, `gallery_image`, `date`, `process`) VALUES
-(110, 14, 'album 1', 'flower1.jpg', '2024-03-02', ''),
-(111, 14, 'album 1', 'flower2.jpg', '2024-03-02', ''),
-(112, 14, 'album 1', 'flower3.jpg', '2024-03-02', ''),
-(113, 15, 'album 2', 'arrangeflower.jpg', '2024-03-02', ''),
-(114, 15, 'album 2', 'galleryimg2.jpg', '2024-03-02', ''),
-(115, 15, 'album 2', 'galleryimg3.jpg', '2024-03-02', '');
 
 --
 -- Indexes for dumped tables
