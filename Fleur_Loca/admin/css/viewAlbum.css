@@ -1,0 +1,41 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+
+}
+th {
+    background-color: #f8eaea;
+}
+
+table thead tr{
+    text-align: center;
+}
+
+table tbody img{
+    align-items: center;
+}
+
+
+.albumtable{
+    margin-top: 50px;
+}
+
+.card .card-header{
+    background-color: white;
+}
+
+.card-header h2{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.card-header h2{
+    font-size: 40px;
+    font-family: 'Lora', serif;
+    color: #85AD6E;
+}
