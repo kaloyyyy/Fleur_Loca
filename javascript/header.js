@@ -9,21 +9,19 @@ document.write('\
       <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button"\
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"\
         aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">\
-  <span class="toggler-icon top-bar"></span>\
-  <span class="toggler-icon middle-bar"></span>\
-  <span class="toggler-icon bottom-bar"></span>\
-</button>\
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">\
+        <span class="toggler-icon top-bar"></span>\
+        <span class="toggler-icon middle-bar"></span>\
+        <span class="toggler-icon bottom-bar"></span>\
+      </button>\
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">\
         <div class="offcanvas-header">\
           <a class="offcanvas-brand" href="index.html"> <img src="/Fleur_Loca/images/fleurlogo.png" alt="" />\</a>\
-          <a type="button" class="text-reset" data-bs-dismiss="offcanvas" aria-label="Close""><i class="fa-solid fa-xmark"></i></a>\
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>\
         </div>\
         <div class="offcanvas-body">\
           <ul class="navbar-nav">\
             <li class="nav-item">\
-              <a class="nav-link active" aria-current="page" href="index.php"\
-                >Home</a\
-              >\
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>\
             </li>\
             <li class="nav-item">\
               <a class="nav-link" href="gallerypage.php">Gallery</a>\
@@ -41,4 +39,3 @@ document.write('\
   </nav>\
 </header>\
 ');
-

@@ -205,15 +205,22 @@
 
 .gallerypic .container {
     position: relative;
+    display: flex;  /* Enable flexbox */
+    flex-direction: column;  /* Stack content vertically */
 }
+
+
+.gallerypic .container img {
+    max-width: 100%;
+    height: 250px; /* This ensures the image maintains its aspect ratio */
+}
+
 
 .content {
     position: absolute;
     top: 0;
-    left: 5;
-    max-width: 400px;
-    max-height: 250px;
-    width: 100%;
+    left: 14px;  /* Remove left padding */
+    width: calc(100% - 26px);  /* Adjust based on actual padding on container */
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     display: flex;
@@ -221,19 +228,33 @@
     align-items: center;
     flex-direction: column;
     opacity: 0;
-    transition: opacity 0.6s;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    color: white;
+    padding: 10px 20px; /* Adjust padding for better wrapping on smaller screens */
 }
+
+.content a{
+    text-decoration: none;
+
+}
+
 
 .gallerypic .container:hover .content {
     opacity: 1;
 }
 
 .content h3 {
-    color: #fff;
+    color: #ff7e06;
     font-size: 24px;
     text-align: center;
     margin: 0;
     padding: 10px;
+    transition: 0.8s ease;
+}
+
+.content h3:hover{
+    color: #85AD6E;
 }
 
 
@@ -244,9 +265,9 @@
 
     .modal-dialog{
         width: 400px;
-    
+
     }
-    
+
 }
 
 
@@ -257,31 +278,25 @@
 
     .modal-dialog{
         width: 400px;
-    
+
     }
-    
-    
+
+
 }
 
 
 
 @media screen and (max-width: 991px) {
 
-
-    .gallerypic img{
-        width: 250px;
-        height: 250px;
-    }
+    /* Maintain existing styles from previous media query */
 
     .modal-dialog{
         width: 300px;
-    
+
     }
- 
+
 }
 
-
-    
 
 @media screen and (max-width: 767px) {
 
@@ -299,24 +314,30 @@
 
 
     .gallerypic .galleryimage {
-        max-width: 180px;
+        max-width: 48%;  /* Adjust this value to achieve 2 columns */
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
 
-    
+
     .gallerypic .card img {
         max-width: 100%;
         height: auto;
     }
 
 
-    
+
 
 }
 
+/* New media query targeting 900px to 800px (Optional): */
+@media screen and (max-width: 900px) and (min-width: 768px) {
+    .content {
+        width: calc(100% - 20px);  /* Adjust padding value as needed */
+    }
+}
 
 @media screen and (max-width: 575px) {
 
@@ -333,21 +354,22 @@
         align-items: center;
         flex-direction: column;
     }
+    .gallerypic .container{
+        width: 100% /* Adjust maximum height for landscape orientation (optional) */
 
-    .gallerypic .card img {
-        width: 250px; 
-        height: auto;
-        height: 300px; /* Set a maximum height for landscape orientation */
     }
 
-
+    .gallerypic .container img{
+        width: 100%;  /* Allow image to fill container width */
+        min-height: auto;     /* Maintain aspect ratio */
+        object-fit: cover;  /* Ensure image covers the container, potentially cropping */
+    }
 
     .modal-dialog {
         max-width: 90%; /* Adjust the maximum width as needed */
         margin: auto;
     }
 }
-
 
 @media screen and (max-width: 450px){
     #gallerymain{
@@ -359,7 +381,7 @@
 
 
     .gallerypic .card img {
-        width: 230px; 
+        width: 230px;
         height: auto;
         height: 250px; /* Set a maximum height for landscape orientation */
     }
@@ -380,7 +402,7 @@
 
 
     .gallerypic .card img {
-        width: 200px; 
+        width: 200px;
         height: auto;
         height: 200px; /* Set a maximum height for landscape orientation */
     }
@@ -388,11 +410,10 @@
 
 
     .modal-dialog {
-        max-width: 80%; 
+        max-width: 80%;
         margin: auto;
     }
 }
-
 #followbanner{
       margin: 80px 80px;
        display: flex;
@@ -587,4 +608,4 @@
         padding: 20px 30px;
     
 }  
-} 
+}

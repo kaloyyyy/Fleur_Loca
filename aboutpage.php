@@ -19,66 +19,9 @@
     ></script>
   </head>
   <body>
-    <script src="javascript/header.js"></script>
+  <script src="javascript/header.js"></script>
 
-    <section id="aboutbanner">
-      <div class="about-content">
-        <div class="container">
-          <h1>About Us</h1>
-        </div>
-      </div>
-    </section>
-
-    <section id="recommendation_section">
-        <div class="about-intro col-12 text-center">
-            <h1>We're Your Best Local Florist Shop</h1>
-            <p>From more than 30 years, we’ve been leading the way across Oklahoma — creating the best possible customer experience since 1989.</p>
-          </div>
-
-          <div class="text-center mb-3" id="contents">
-            <div class="recommendations">
-            <div class="col-md-2 col-sm-12 col-xs-12 custom-margin">
-                <div class="feats col-xs-2">
-                    <span class="fa-solid fa-lightbulb"></span>
-                </div>
-                <div class="recommend col-xs-10">
-                    <h4>Elegant Designs</h4>
-                    <p> Discover the perfect blend of creativity and sophistication in every arrangement, adding timeless beauty to your special occasions</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-12 col-xs-12 custom-margin ">
-                <div class="feats col-xs-2">
-                    <span class="fa-solid fa-clock"></span>
-                </div>
-                <div class="recommend col-xs-10">
-                    <h4>On Schedule</h4>
-                    <p> Count on us to deliver and complete your elegant floral designs on time, ensuring your events are both beautiful and punctual.</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-12 col-xs-12 custom-margin">
-                <div class="feats col-xs-2 ">
-                    <span class="fa-solid fa-handshake-simple"></span>
-                </div>
-                <div class="recommend col-xs-10">
-                    <h4>Great Service</h4>
-                    <p> Beyond beautiful designs, we prioritize your experience, ensuring every interaction is as delightful as our arrangements.</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-12 col-xs-12 custom-margin">
-                <div class="feats col-xs-2 ">
-                    <span class="fa-solid fa-hand-holding-dollar"></span>
-                </div>
-                <div class="recommend col-xs-10">
-                    <h4>Affordable</h4>
-                    <p>We offer exquisite floral designs that don't break the bank, providing affordability without compromising on quality or service excellence.</p>
-                </div>
-            </div>
-            </div>
-          </div>         
-        </div>
-    </section>
-
-    <section id="owner_section">
+  <section id="owner_section">
         <div class="container">
           <div class="left">
           </div>

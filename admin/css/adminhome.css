@@ -34,3 +34,39 @@ nav.navbar{
 .details i{
     font-size: 20px;
 }
+
+
+.table-container {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+
+.activities{
+    margin-top: 50px;
+}
+
+
+.activities .activity_title{
+    color: #ff7e06;
+    font-family: 'Roboto Slab';
+}
+
+.table-container .table-header{
+    font-size: 20px;
+    font-family: 'Hanken Grotesk';
+}
+
+.table-container .table-header th{
+    color: #ff7e06;
+}
+
+
+.table-container tbody{
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+.table-container tbody tr td{
+    color: #252525;
+}

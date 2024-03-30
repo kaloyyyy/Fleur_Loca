@@ -23,9 +23,6 @@
     
 
     <script src="javascript/header.js"></script>
-
-
-    
       <section id="hero">
       <div class="hero">
         <div class="landing-text">
@@ -60,11 +57,11 @@
             class="img-fluid pb-4 steps__section-thumbnail"
             data-bs-toggle="modal"
             data-bs-target="#gallery_modal"
-            width="500"
+            width="600"
             height="640"
             loading="lazy"
           />
-          <p class="mb-0">In courtesy of: Rachel Toia from Rachel Toia Photography</p>
+                <p class="reference mb-0">In courtesy of: Rachel Toia from Rachel Toia Photography</p>
         </div>
 
         <div class="col-12 col-sm-6 align-self-center justify-content-md-center">
@@ -76,7 +73,6 @@
           </div>
         </div>
       </div>
-
       <div
         class="modal fade"
         id="gallery_modal"

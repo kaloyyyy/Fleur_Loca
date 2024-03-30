@@ -16,7 +16,7 @@ if (isset($_POST['loginadmin'])) {
 
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['email'] =$email;
+        $_SESSION['adminID'] = $row['adminID']; // Set adminID in session
         header("Location: /Fleur_Loca/admin/adminhome.php");
     }
     else {

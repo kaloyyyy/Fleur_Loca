@@ -3,6 +3,21 @@
 require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
 
 
+session_start();
+error_reporting(0);
+
+if(isset($_SESSION['adminID'])) {
+    $adminID = $_SESSION['adminID'];
+
+    if(isset($_GET['delete'])){
+        $id = $_GET['delete'];
+        mysqli_query($conn, "DELETE FROM gallery WHERE galleryID = '$id'");
+        header('Location: /Fleur_Loca/admin/viewimage.php?album_id=' . $_GET['album_id']);
+        exit; // Stop further execution after redirection
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +29,7 @@ require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/adminheader.css">
     <link rel="stylesheet" href="css/viewAlbum.css">
+    <link rel="stylesheet" href="css/adminhome.css">
     <link rel="stylesheet" href="/Fleur_Loca/css/style.css">
     <link rel="stylesheet" href="/Fleur_Loca/css/header.css">
 
@@ -32,9 +48,9 @@ require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
 
     <div id="page-content-wrapper">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Dashboard</h2>
+            <div class="dashboard d-flex align-items-center">
+                <i class="fas fa-align-left fs-4 me-3" id="menu-toggle"></i>
+                <h2 class="fs-2 m-0">Album Gallery</h2>
             </div>
         </nav>
 
@@ -56,9 +72,15 @@ require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
                                 if ($result) {
                                     // Fetch the row from the result set
                                     $row = mysqli_fetch_assoc($result);
-                                    ?>
-                                    <h2><?php echo $row['gallery_name']; ?></h2>
-                                    <?php
+                                    if ($row) {
+                                        ?>
+                                        <h2><?php echo $row['gallery_name']; ?></h2>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <h2>No gallery found</h2>
+                                        <?php
+                                    }
                                 }
                             }
                             ?>
@@ -70,34 +92,45 @@ require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
                                     <th>Gallery Name</th>
                                     <th>Background Image</th>
                                     <th>Date Created</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    if(isset($_GET['album_id'])) {
-                                        $albumID = $_GET['album_id'];
+                                if(isset($_GET['album_id'])) {
+                                    $albumID = $_GET['album_id'];
 
-                                        // Query the database to retrieve images for the selected album
-                                        $sql = "SELECT * FROM gallery WHERE album_id = $albumID";
-                                        $result = mysqli_query($conn, $sql);
+                                    // Query the database to retrieve images for the selected album
+                                    $sql = "SELECT * FROM gallery WHERE album_id = $albumID";
+                                    $result = mysqli_query($conn, $sql);
 
-                                        // Display images
-                                        if ($result && mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                ?>
-                                <tr>
-                                    <td><?php echo $row['gallery_image'] ?></td>
-                                    <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['gallery_image'] ?>" alt="<?php echo $row['gallery_name'] ?>" width="100px" height="120px"></td>
-                                    <td><?php echo $row['date'] ?></td>
-
-                                </tr>
-                                <?php
-                                            }
+                                    // Display images
+                                    if ($result && mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $row['gallery_image'] ?></td>
+                                                <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['gallery_image'] ?>" alt="<?php echo $row['gallery_name'] ?>" width="100px" height="120px"></td>
+                                                <td><?php echo $row['date'] ?></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <!-- Add data attributes to store album ID and album name -->
+                                                        <a href="/Fleur_Loca/admin/viewimage.php?delete=<?php echo $row['galleryID']; ?>&album_id=<?php echo $albumID; ?>" class="btn btn-primary btn-block" onclick="reloadPage()">Delete</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php
                                         }
+                                    } else {
+                                        // Display "No image found" if no images found
+                                        ?>
+                                        <tr>
+                                            <td colspan="3">No image found</td>
+                                        </tr>
+                                        <?php
                                     }
-                                    ?>
-
-                                <!-- Add more rows for additional albums -->
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
@@ -121,6 +154,12 @@ require_once 'C:\xampp\htdocs\Fleur_Loca\config\config.php';
 
 
 </body>
+<script>
+    // Reload the page after deletion
+    function reloadPage() {
+        window.location.reload();
+    }
+</script>
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

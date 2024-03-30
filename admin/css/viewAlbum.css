@@ -39,3 +39,17 @@ table tbody img{
     font-family: 'Lora', serif;
     color: #85AD6E;
 }
+
+
+.form-group .btn{
+    display: inline-block;
+    background-color: #F4903A;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    width: 140px;
+    cursor: pointer;
+}

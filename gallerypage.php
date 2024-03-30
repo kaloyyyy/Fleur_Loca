@@ -49,36 +49,33 @@ error_reporting(0);
     </div>
 
     <section id="gallerymain">
-      <!--bouquet-->
-      <div class="container">
-              <div class="gallerypic row reveal">
-                  <?php
-                  $query = "SELECT * FROM album";
-                  $result = mysqli_query($conn, $query);
+        <!--bouquet-->
+        <div class="container">
+            <div class="gallerypic row reveal">
+                <?php
+                $query = "SELECT * FROM album";
+                $result = mysqli_query($conn, $query);
 
-                  if(mysqli_num_rows($result) > 0) {
-                      // Output data of each row
-                      while($row = mysqli_fetch_assoc($result)) {
-                          ?>
-                          <div class="gallerypic col-md-4 col-6 py-1 py-md-0">
-                              <div class="container">
-                                  <img src="/Fleur_Loca/gallerypic/<?php echo $row['background_image']; ?>" alt="Album Image" width="400" height="250">
-                                  <div class="content">
-                                      <a href="galleryimages.php?album_id=<?php echo $row['albumID']; ?>"><h3><?php echo $row['albumName'];?></h3></a>
-                                  </div>
-                              </div>
-                          </div>
-
-
-
-                          <?php
-                      };
-                  };
-                  ?>
-              </div>
-          </div>
-
+                if(mysqli_num_rows($result) > 0) {
+                    // Output data of each row
+                    while($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <div class="galleryimage col-lg-4 col-md-6 py-3 py-md-0">
+                            <div class="container">
+                                <img src="/Fleur_Loca/gallerypic/<?php echo $row['background_image']; ?>" alt="Album Image" width="400" height="250">
+                                <div class="content">
+                                    <a href="galleryimages.php?album_id=<?php echo $row['albumID']; ?>"><h3><?php echo $row['albumName'];?></h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    };
+                };
+                ?>
+            </div>
+        </div>
     </section>
+
 
     <section id="followbanner">
       <div class="follow-section">

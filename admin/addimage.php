@@ -48,6 +48,7 @@ if(isset($_POST['submit'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/adminheader.css">
     <link rel="stylesheet" href="css/addalbum.css">
+    <link rel="stylesheet" href="css/adminhome.css">
     <link rel="stylesheet" href="/Fleur_Loca/css/style.css">
     <link rel="stylesheet" href="/Fleur_Loca/css/header.css">
 
@@ -66,58 +67,58 @@ if(isset($_POST['submit'])) {
 
     <div id="page-content-wrapper">
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-            <div class="d-flex align-items-center">
-                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                <h2 class="fs-2 m-0">Dashboard</h2>
-            </div>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user me-2"></i>Profile
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="dashboard d-flex align-items-center">
+                <i class="fas fa-align-left fs-4 me-3" id="menu-toggle"></i>
+                <h2 class="fs-2 m-0">Add Image</h2>
             </div>
         </nav>
 
-        <form action="addimage.php" method="post" enctype="multipart/form-data">
-            <label for="album_id">Select Album:</label><br>
-            <select class="form-select" id="album_id" name="album_id">
-                <option selected>Select Album</option>
-                <?php
-                $sql = "SELECT * FROM album";
-                $query_run = mysqli_query($conn, $sql);
 
-                if ($query_run && mysqli_num_rows($query_run) > 0) {
-                    while ($row = mysqli_fetch_assoc($query_run)) {
-                        ?>
-                        <option value="<?= $row['albumID'];?>"><?= $row['albumName'];?></option>
+        <div class="container">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <form action="addimage.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="album_id">Select Album to add image:</label><br>
+                            <select class="form-select" id="album_id" name="album_id">
+                                <option selected>Select Album</option>
+                                <?php
+                                $sql = "SELECT * FROM album";
+                                $query_run = mysqli_query($conn, $sql);
+
+                                if ($query_run && mysqli_num_rows($query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($query_run)) {
+                                        ?>
+                                        <option value="<?= $row['albumID'];?>"><?= $row['albumName'];?></option>
+                                        <?php
+                                    }
+                                } else {
+                                    echo "No categories";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gallery_image">Gallery Images:</label><br>
+                            <input type="file" id="gallery_image" name="gallery_image[]" multiple>
+                            <div class="form-text" id="form-text">Example "Recomended Image Size in pixel 400 X 300"</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block" value="Submit" name="submit">
+                        </div>
+                    </form>
+                    <div class="message">
                         <?php
-                    }
-                } else {
-                    echo "No categories";
-                }
-                ?>
-            </select>
-
-            <br><br>
-
-            <label for="gallery_image">Gallery Images:</label><br>
-            <input type="file" id="gallery_image" name="gallery_image[]" multiple><br><br>
-
-            <input type="submit" value="Submit" name="submit">
-        </form>
+                        if(!empty($message)){
+                            foreach ($message as $msg){
+                                echo '<span class="message">'.$msg.'</span><br>';
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 
 

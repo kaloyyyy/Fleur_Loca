@@ -53,15 +53,10 @@
                         </li>
                     </ul>
                 </li>
-                <li class="list-group-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed bg-transparent second-text fw-bold" data-bs-toggle="collapse" data-bs-target="#profile" aria-expanded="false" aria-controls="collapseOne">Profile</a>
-                    <ul id="profile" class="sidebar-dropdown list unstyled collapse" data-bs-parent="#sidebar-wrapper">
-                        <li class="sidebar-item">
-                            <a href="addimage.php" class="sidebar-link bg-transparent second-text fw-bold">Edit Profile</a>
-                        </li>
-                    </ul>
+                <li class="list-group">
+                    <a class="list-group-item second-text bg-transparent fw-bold" href="editprofile.php">Profile</a>
                 </li>
-                <a href="#" class="list-group-item bg-transparent text-danger fw-bold">Logout</a>
+                <a href="/Fleur_Loca/admin.php" class="list-group-item bg-transparent text-danger fw-bold">Logout</a>
             </div>
         </div>
 
