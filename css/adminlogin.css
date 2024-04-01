@@ -21,21 +21,9 @@
     position: relative;
 }
 
-#logo {
-    max-width: 200px; /* Adjust as needed */
-}
-
-.brand-logo {
-    position: relative;
-    display: flex;
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-}
-
 #adminlogin {
     position: relative;
-    height: 200px;
+    height: 500px;
     margin-bottom: 50px;
     display: flex;
     justify-content: center;
@@ -102,4 +90,44 @@
     cursor: pointer;
 }
 
+/*signup*/
 
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 300px;
+    padding: 10px;
+    background-color: #ff6666;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+    float: right;
+    cursor: pointer;
+}
+
+
+#adminsignup {
+    position: relative;
+    height: 600px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-error {
+    background-color: #f8d7da; /* Red background for error */
+    color: #721c24; /* Dark red text for error */
+}
+
+.alert-success {
+    background-color: #d4edda; /* Green background for success */
+    color: #155724; /* Dark green text for success */
+}

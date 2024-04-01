@@ -70,3 +70,13 @@ nav.navbar{
 .table-container tbody tr td{
     color: #252525;
 }
+
+.dashboard-body h3{
+    color: #F4903A;
+    font-size: 35px;
+}
+
+.dashboard-body .board-title {
+    font-size: 30px;
+    color: #85AD6E;
+}

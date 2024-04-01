@@ -83,51 +83,52 @@ if(isset($_SESSION['adminID'])) {
 
         <div class="container albumtable">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col">
                     <div class="card">
                         <div class="card-header">
                             <h2>Albums</h2>
                         </div>
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Album Name</th>
-                                    <th>Album Image</th>
-                                    <th>Date Created</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                $sql = "SELECT * FROM album";
-                                $result = mysqli_query($conn, $sql);
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Album Name</th>
+                                        <th scope="col">Album Image</th>
+                                        <th scope="col">Date Created</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $sql = "SELECT * FROM album";
+                                    $result = mysqli_query($conn, $sql);
 
-                                if ($result) {
-                                    if (mysqli_num_rows($result) > 0) {
+                                    if ($result && mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_array($result)) {
                                             ?>
                                             <tr>
                                                 <td><?php echo $row['albumName'] ?></td>
-                                                <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['background_image'] ?>" alt="<?php echo $row['albumName'] ?>" width="150px" height="100px"></td>
+                                                <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['background_image'] ?>" alt="<?php echo $row['albumName'] ?>" class="img-fluid" style="max-width: 150px; height: auto;"></td>
                                                 <td><?php echo  $date = date("F j, Y, g:i a", strtotime($row['date'])); ?></td>
                                                 <td>
                                                     <div class="form-group">
-                                                        <a href="/Fleur_Loca/admin/editalbum.php?update=<?php echo $row['albumID']; ?>" class="btn btn-primary btn-block">Edit</a>
-                                                        <!-- Add data attributes to store album ID and album name -->
-                                                        <button class="btn btn-primary btn-block delete-btn" data-bs-toggle="modal" data-bs-target="#deleteAlbum" data-album-id="<?php echo $row['albumID']; ?>" data-album-name="<?php echo $row['albumName']; ?>">Delete</button>
+                                                        <div class="d-grid gap-2">
+                                                            <a href="/Fleur_Loca/admin/editalbum.php?update=<?php echo $row['albumID']; ?>" class="btn btn-primary">Edit</a>
+                                                            <button class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#deleteAlbum" data-album-id="<?php echo $row['albumID']; ?>" data-album-name="<?php echo $row['albumName']; ?>">Delete</button>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <?php
-
                                         }
+                                    } else {
+                                        echo "<tr><td colspan='4'>No albums found</td></tr>";
                                     }
-                                }
-                                ?>
-
-                                </tbody>
-                            </table>
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

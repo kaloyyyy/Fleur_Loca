@@ -13,16 +13,30 @@ if (isset($_SESSION['adminID'])) {
         $id = $_GET['update']; // Get the admin ID from the URL parameter
         $adminName = $_POST['admin_name'];
         $email = $_POST['admin_email'];
-        $password = $_POST['admin_password'];
+        $password = $_POST['admin_password']; // New plain text password
+
+        // Check if a new password is provided
+        if (!empty($password)) {
+            // Hash the new password
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        }
 
         // SQL Update query for admin
-        $sql = "UPDATE admin SET admin_name = ?, admin_email = ?, admin_password = ? WHERE adminID = ?";
-
-        // Prepare the SQL statement
-        $stmt = mysqli_prepare($conn, $sql);
-
-        // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, "sssi", $adminName, $email, $password, $id);
+        if (!empty($password)) {
+            // Update password along with other fields
+            $sql = "UPDATE admin SET admin_name = ?, admin_email = ?, admin_password = ? WHERE adminID = ?";
+            // Prepare the SQL statement
+            $stmt = mysqli_prepare($conn, $sql);
+            // Bind parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "sssi", $adminName, $email, $hashed_password, $id);
+        } else {
+            // Update other fields excluding password
+            $sql = "UPDATE admin SET admin_name = ?, admin_email = ? WHERE adminID = ?";
+            // Prepare the SQL statement
+            $stmt = mysqli_prepare($conn, $sql);
+            // Bind parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "ssi", $adminName, $email, $id);
+        }
 
         // Execute the prepared statement
         if (mysqli_stmt_execute($stmt)) {
@@ -36,11 +50,8 @@ if (isset($_SESSION['adminID'])) {
         // Close the statement
         mysqli_stmt_close($stmt);
     }
-} else {
-    // Redirect to login page or display an error message
-    header("Location: /Fleur_Loca/adminlogin.php");
-    exit; // Stop further execution of the script
 }
+
 
 ?>
 
@@ -95,6 +106,7 @@ if (isset($_SESSION['adminID'])) {
                                 <label for="adminPassword" class="label">Password:</label>
                                 <input type="password" class="form-control" id="admin_password" name="admin_password" value="<?php echo $row['admin_password']; ?>">
                             </div>
+
                             <?php
                         }
                         ?>

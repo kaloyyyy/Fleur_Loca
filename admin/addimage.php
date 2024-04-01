@@ -79,7 +79,7 @@ if(isset($_POST['submit'])) {
                 <div class="card-body p-4">
                     <form action="addimage.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="album_id">Select Album to add image:</label><br>
+                            <label for="album_id" class="label">Select Album to add image:</label><br>
                             <select class="form-select" id="album_id" name="album_id">
                                 <option selected>Select Album</option>
                                 <?php
@@ -99,7 +99,7 @@ if(isset($_POST['submit'])) {
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="gallery_image">Gallery Images:</label><br>
+                            <label for="gallery_image" class="label">Gallery Images:</label><br>
                             <input type="file" id="gallery_image" name="gallery_image[]" multiple>
                             <div class="form-text" id="form-text">Example "Recomended Image Size in pixel 400 X 300"</div>
                         </div>

@@ -44,7 +44,7 @@ $message = array();
             <div class="card w-100">
                 <div class="card-body p-4">
                     <form action="viewimage.php" method="GET">
-                        <label for="album_id">Select Album to add image:</label><br>
+                        <label for="album_id" class="label">Select Album to add image:</label><br>
                         <select class="form-select" id="album_id" name="album_id">
                             <option selected>Select Album</option>
                             <?php

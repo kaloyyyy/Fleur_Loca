@@ -55,22 +55,21 @@ if (!isset($_SESSION['adminID'])) {
 
         <div class="container-fluid px-4">
             <div class="row g-3 my-2">
-                <div class="row g-3 my-2">
-
-                    <div class="col-md-3">
+                <div class="row row-cols-1 row-cols-md-2 g-3 my-2">
+                    <div class="col">
                         <div class="dashboard-box p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
+                            <div class="dashboard-body">
                                 <?php
                                 $query = "SELECT albumID FROM album ORDER BY albumID";
                                 $query_run = mysqli_query($conn, $query);
                                 if ($row = mysqli_num_rows($query_run)) {
-                                    echo '<h3 class="fs-2" style="color: #F4903A">' . $row . '</h3>';
+                                    echo '<h3>' . $row . '</h3>';
                                 }else{
-                                    echo '<h3 class="fs-2" style="color: #ef6767">No Data</h3>';
+                                    echo '<h3>No Data</h3>';
                                 }
 
                                 ?>
-                                <p class="fs-5" style="color: #85AD6E;"><b>Albums</b></p>
+                                <p class="board-title">Album</p>
                             </div>
                             <i class="fa-solid fa-images fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
@@ -88,20 +87,20 @@ if (!isset($_SESSION['adminID'])) {
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class=" dashboard-box p-3 shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
+                            <div class="dashboard-body">
                                 <?php
                                 $query = "SELECT galleryID FROM gallery ORDER BY galleryID";
                                 $query_run = mysqli_query($conn, $query);
                                 if ($row = mysqli_num_rows($query_run)) {
-                                    echo '<h3 class="fs-2" style="color: #F4903A">' . $row . '</h3>';
+                                    echo '<h3>' . $row . '</h3>';
                                 }else{
-                                    echo '<h3 class="fs-2" style="color: #ef6767">No Data</h3>';
+                                    echo '<h3>No Data</h3>';
                                 }
 
                                 ?>
-                                <p class="fs-5" style="color:#85AD6E;"><b>Gallery Images</b></p>
+                                <p class="board-title">Gallery</p>
                             </div>
                             <i class="fa-solid fa-camera fs-1 border rounded-full secondary-bg p-3" style="color: #F4903A"></i>
                         </div>

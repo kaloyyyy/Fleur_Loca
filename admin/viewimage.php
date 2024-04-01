@@ -57,7 +57,7 @@ if(isset($_SESSION['adminID'])) {
 
         <div class="container albumtable">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col">
                     <div class="card">
                         <div class="card-header">
                             <?php
@@ -86,53 +86,57 @@ if(isset($_SESSION['adminID'])) {
                             ?>
                         </div>
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Gallery Name</th>
-                                    <th>Background Image</th>
-                                    <th>Date Created</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                if(isset($_GET['album_id'])) {
-                                    $albumID = $_GET['album_id'];
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Gallery Name</th>
+                                        <th>Background Image</th>
+                                        <th>Date Created</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    if(isset($_GET['album_id'])) {
+                                        $albumID = $_GET['album_id'];
 
-                                    // Query the database to retrieve images for the selected album
-                                    $sql = "SELECT * FROM gallery WHERE album_id = $albumID";
-                                    $result = mysqli_query($conn, $sql);
+                                        // Query the database to retrieve images for the selected album
+                                        $sql = "SELECT * FROM gallery WHERE album_id = $albumID";
+                                        $result = mysqli_query($conn, $sql);
 
-                                    // Display images
-                                    if ($result && mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        // Display images
+                                        if ($result && mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['gallery_image'] ?></td>
+                                                    <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['gallery_image'] ?>" alt="<?php echo $row['gallery_name'] ?>" width="100px" height="120px"></td>
+                                                    <td><?php echo  $date = date("F j, Y, g:i a", strtotime($row['date'])); ?></td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <div class="d-grid gap-2">
+                                                            <!-- Add data attributes to store album ID and album name -->
+                                                                <a href="/Fleur_Loca/admin/viewimage.php?delete=<?php echo $row['galleryID']; ?>&album_id=<?php echo $albumID; ?>" class="delete-btn btn btn-danger btn-block" onclick="reloadPage()">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        } else {
+                                            // Display "No image found" if no images found
                                             ?>
                                             <tr>
-                                                <td><?php echo $row['gallery_image'] ?></td>
-                                                <td><img src="/Fleur_Loca/gallerypic/<?php echo $row['gallery_image'] ?>" alt="<?php echo $row['gallery_name'] ?>" width="100px" height="120px"></td>
-                                                <td><?php echo $row['date'] ?></td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <!-- Add data attributes to store album ID and album name -->
-                                                        <a href="/Fleur_Loca/admin/viewimage.php?delete=<?php echo $row['galleryID']; ?>&album_id=<?php echo $albumID; ?>" class="btn btn-primary btn-block" onclick="reloadPage()">Delete</a>
-                                                    </div>
-                                                </td>
+                                                <td colspan="3">No image found</td>
                                             </tr>
                                             <?php
                                         }
-                                    } else {
-                                        // Display "No image found" if no images found
-                                        ?>
-                                        <tr>
-                                            <td colspan="3">No image found</td>
-                                        </tr>
-                                        <?php
                                     }
-                                }
-                                ?>
-                                </tbody>
-                            </table>
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
